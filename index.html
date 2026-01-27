@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>💗 Sana Küçük Bir Sürpriz 💗</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --pink1:#ffe4ec;
@@ -25,16 +27,39 @@ body{
   overflow-x:hidden;
 }
 
-/* 🎀 ARKAPLAN */
+/* 🎀 HAREKETLİ ARKAPLAN */
 body::before{
   content:"";
   position:fixed;
   inset:0;
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ctext x='10' y='60' font-size='28'%3E🎀%3C/text%3E%3Ctext x='60' y='100' font-size='24'%3E💗%3C/text%3E%3C/svg%3E");
-  opacity:0.15;
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Ctext x='10' y='70' font-size='30'%3E🎀%3C/text%3E%3Ctext x='70' y='120' font-size='26'%3E💗%3C/text%3E%3C/svg%3E");
+  opacity:0.18;
+  animation: bgmove 40s linear infinite;
   pointer-events:none;
   z-index:-1;
+}
+
+@keyframes bgmove{
+  from{ background-position:0 0; }
+  to{ background-position:600px 600px; }
+}
+
+/* 💕 UÇUŞAN KALPLER */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:18px;
+  animation: fall linear infinite;
+  opacity:.8;
+  z-index:999;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) translateX(40px);
+    opacity:0;
+  }
 }
 
 section{
@@ -43,13 +68,16 @@ section{
   margin:auto;
 }
 
-h1,h2{ text-align:center; }
+h1,h2{
+  text-align:center;
+  font-family:"Pacifico", cursive;
+}
 
 .hero{
   text-align:center;
   padding:90px 20px;
 }
-.hero h1{ font-size:2.4rem; }
+.hero h1{ font-size:2.5rem; }
 .hero span{ color:var(--pink3); }
 
 .love-box{
@@ -69,7 +97,7 @@ h1,h2{ text-align:center; }
   cursor:pointer;
   transition:.3s;
 }
-.photo-area:hover{ transform:scale(1.04); }
+.photo-area:hover{ transform:scale(1.05); }
 
 .photo-text{
   margin-top:15px;
@@ -89,7 +117,7 @@ footer{
   opacity:.85;
 }
 
-/* ANİMASYON */
+/* SCROLL */
 .animate{
   opacity:0;
   transform:translateY(40px);
@@ -100,7 +128,7 @@ footer{
   transform:none;
 }
 
-/* MODAL FOTO */
+/* MODAL */
 .modal{
   display:none;
   position:fixed;
@@ -108,7 +136,7 @@ footer{
   background:rgba(0,0,0,.7);
   justify-content:center;
   align-items:center;
-  z-index:999;
+  z-index:1000;
 }
 .modal img{
   max-width:90%;
@@ -116,8 +144,30 @@ footer{
   border-radius:20px;
 }
 
+/* 🎁 GİZLİ SÜRPRİZ */
+.secret{
+  text-align:center;
+  margin-top:80px;
+}
+.secret button{
+  background:#ff6f91;
+  color:#fff;
+  border:none;
+  padding:14px 26px;
+  border-radius:30px;
+  font-size:1.1rem;
+  cursor:pointer;
+}
+.secret p{
+  display:none;
+  margin-top:20px;
+  font-family:"Pacifico", cursive;
+  font-size:1.8rem;
+  color:#ff3f8b;
+}
+
 @media(max-width:600px){
-  .hero h1{ font-size:1.9rem; }
+  .hero h1{ font-size:2rem; }
 }
 </style>
 </head>
@@ -179,31 +229,49 @@ footer{
   </p>
 </section>
 
+<div class="secret animate">
+  <button onclick="showSecret()">🎁 Son Bir Şey…</button>
+  <p id="secretText">Seni her şeyden çok seviyorum Defne 💖</p>
+</div>
+
 <footer class="animate">
   💕 Sadece senin için hazırlandı
 </footer>
 
-<!-- FOTO MODAL -->
 <div class="modal" id="photoModal" onclick="closePhoto()">
   <img src="defta.jpg" alt="Biz">
 </div>
 
 <script>
-/* scroll animasyon */
-const obs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add("show"); }
-  });
+/* scroll */
+const obs=new IntersectionObserver(e=>{
+  e.forEach(i=>i.isIntersecting&&i.target.classList.add("show"))
 },{threshold:.2});
 document.querySelectorAll(".animate").forEach(i=>obs.observe(i));
 
-/* foto modal */
+/* foto */
 function openPhoto(){
   document.getElementById("photoModal").style.display="flex";
 }
 function closePhoto(){
   document.getElementById("photoModal").style.display="none";
 }
+
+/* gizli mesaj */
+function showSecret(){
+  document.getElementById("secretText").style.display="block";
+}
+
+/* kalpler */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerText=Math.random()>0.5?"💗":"💕";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=3+Math.random()*4+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+},400);
 </script>
 
 </body>
