@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>💗 Sana Küçük Bir Sürpriz 💗</title>
 
-<!-- 💗 ROMANTİK FONTLAR -->
+<!-- 💗 ROMANTİK FONTLAR (GARANTİLİ) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -16,12 +18,17 @@
   --text:#5a1a2c;
 }
 
-/* GENEL */
-*{
-  box-sizing:border-box;
-  font-family:"Quicksand", sans-serif;
+/* GENEL FONT */
+html, body{
+  font-family:"Quicksand", system-ui, sans-serif !important;
 }
 
+/* RESET */
+*{
+  box-sizing:border-box;
+}
+
+/* BODY */
 body{
   margin:0;
   background:linear-gradient(180deg,var(--pink1),#fff);
@@ -29,27 +36,23 @@ body{
   overflow-x:hidden;
 }
 
-/* 💗 HAREKETLİ ARKAPLAN */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(255,182,193,.25), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255,111,145,.25), transparent 40%);
-  animation:bgMove 18s linear infinite;
-  z-index:-1;
-}
-
-@keyframes bgMove{
-  0%{background-position:0 0,100% 100%}
-  100%{background-position:100% 100%,0 0}
-}
-
-/* BAŞLIKLAR */
-h1,h2{
+/* BAŞLIKLAR – ROMANTİK */
+h1, h2{
   text-align:center;
-  font-family:"Pacifico", cursive;
+  font-family:"Pacifico", cursive !important;
+  letter-spacing:0.5px;
+}
+
+/* PARAGRAF & METİNLER */
+p,
+div,
+span,
+button,
+.love-box,
+.floating-love,
+.photo-text,
+footer{
+  font-family:"Quicksand", system-ui, sans-serif !important;
 }
 
 /* SECTİON */
@@ -116,20 +119,6 @@ footer{
   transform:none;
 }
 
-/* 💗 UÇUŞAN KALPLER */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:18px;
-  animation:floatUp 6s linear infinite;
-  opacity:.7;
-}
-
-@keyframes floatUp{
-  0%{transform:translateY(0) scale(1);opacity:.7}
-  100%{transform:translateY(-110vh) scale(1.6);opacity:0}
-}
-
 /* MODAL */
 .modal{
   display:none;
@@ -146,7 +135,7 @@ footer{
   border-radius:20px;
 }
 
-/* 🎁 GİZLİ BUTON */
+/* GİZLİ BUTON */
 .secret-btn{
   display:block;
   margin:60px auto 0;
@@ -243,17 +232,6 @@ document.querySelectorAll(".animate").forEach(i=>obs.observe(i));
 /* foto */
 function openPhoto(){document.getElementById("photoModal").style.display="flex"}
 function closePhoto(){document.getElementById("photoModal").style.display="none"}
-
-/* kalpler */
-setInterval(()=>{
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="💗";
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=(14+Math.random()*20)+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-},500);
 
 /* gizli mesaj */
 function reveal(){
