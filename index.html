@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>💗 Sana Küçük Bir Sürpriz 💗</title>
+
+<style>
+:root{
+  --pink1:#ffe4ec;
+  --pink2:#ffb6c1;
+  --pink3:#ff6f91;
+  --text:#5a1a2c;
+}
+
+*{
+  box-sizing:border-box;
+  font-family:"Poppins", system-ui, sans-serif;
+}
+
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--pink1),#fff);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* 🎀 ARKAPLAN */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ctext x='10' y='60' font-size='28'%3E🎀%3C/text%3E%3Ctext x='60' y='100' font-size='24'%3E💗%3C/text%3E%3C/svg%3E");
+  opacity:0.15;
+  pointer-events:none;
+  z-index:-1;
+}
+
+section{
+  padding:70px 20px;
+  max-width:900px;
+  margin:auto;
+}
+
+h1,h2{ text-align:center; }
+
+.hero{
+  text-align:center;
+  padding:90px 20px;
+}
+.hero h1{ font-size:2.4rem; }
+.hero span{ color:var(--pink3); }
+
+.love-box{
+  background:#fff;
+  border-radius:22px;
+  padding:28px;
+  margin:30px 0;
+  box-shadow:0 12px 30px rgba(255,111,145,0.25);
+  text-align:center;
+}
+
+.photo-area{
+  background:var(--pink2);
+  padding:45px;
+  border-radius:28px;
+  text-align:center;
+  cursor:pointer;
+  transition:.3s;
+}
+.photo-area:hover{ transform:scale(1.04); }
+
+.photo-text{
+  margin-top:15px;
+  font-size:1.2rem;
+}
+
+.floating-love{
+  margin:55px 0;
+  text-align:center;
+  font-size:1.25rem;
+}
+
+footer{
+  text-align:center;
+  padding:45px;
+  font-size:.9rem;
+  opacity:.85;
+}
+
+/* ANİMASYON */
+.animate{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .9s ease;
+}
+.animate.show{
+  opacity:1;
+  transform:none;
+}
+
+/* MODAL FOTO */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}
+
+@media(max-width:600px){
+  .hero h1{ font-size:1.9rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero animate">
+  <h1>💗 <span>Sana</span> Küçük Bir Sürpriz Sevdiğim 💗</h1>
+  <p>✨MİBAA DEFNECİMM bu sayfaya sadece <b>senn</b> girdiğinde anlam kazanıyor ✨</p>
+</div>
+
+<section>
+  <div class="love-box animate">
+    🌸 Senin koynuna yatıp kalp atışını dinlediğimde çok heyecanlanıyorum.
+  </div>
+
+  <div class="floating-love animate">
+    💕 Seni çok seviyorum, bunu bilmeni istiyorum.
+  </div>
+
+  <div class="love-box animate">
+    Her günümü seninle geçirmek istiyorum, her şeyi yaparım senin için 💗
+  </div>
+</section>
+
+<section>
+  <div class="photo-area animate" onclick="openPhoto()">
+    <h2>📸 Buraya Dokun 💕</h2>
+    <p>Bize ait dudi bir anı saklı</p>
+    <div class="photo-text">
+      💖 seni çok seviyorum Defne 💖
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="floating-love animate">
+    💖 Seni çok seviyorum, her şey için çok özür dilerim Defişçimm.
+  </div>
+
+  <div class="love-box animate">
+    Her zaman seni çok seveceğim Defnecim 🥹
+  </div>
+
+  <div class="floating-love animate">
+    💖 Dudusuyum… her şeyi düzene sokucam, lütfen bana inan.
+  </div>
+
+  <div class="love-box animate">
+    İyi ki varsın Defne'm… iyi ki <b>biz</b> varız 💞
+  </div>
+</section>
+
+<section class="animate">
+  <h2>💌 Küçük ama Gerçek</h2>
+  <p style="text-align:center">
+    Bu sayfa belki basit ama hislerim asla değil <b>Defnecim</b>.<br>
+    Seni gerçekten, çok ama çok seviyorum 💗
+  </p>
+</section>
+
+<footer class="animate">
+  💕 Sadece senin için hazırlandı
+</footer>
+
+<!-- FOTO MODAL -->
+<div class="modal" id="photoModal" onclick="closePhoto()">
+  <img src="defta.jpg" alt="Biz">
+</div>
+
+<script>
+/* scroll animasyon */
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add("show"); }
+  });
+},{threshold:.2});
+document.querySelectorAll(".animate").forEach(i=>obs.observe(i));
+
+/* foto modal */
+function openPhoto(){
+  document.getElementById("photoModal").style.display="flex";
+}
+function closePhoto(){
+  document.getElementById("photoModal").style.display="none";
+}
+</script>
+
+</body>
+</html>
