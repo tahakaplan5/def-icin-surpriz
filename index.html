@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>💗 Sana Küçük Bir Sürpriz 💗</title>
 
-<!-- 💗 ROMANTİK FONTLAR (GARANTİLİ) -->
+<!-- 💗 ROMANTİK FONTLAR -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
@@ -24,9 +24,7 @@ html, body{
 }
 
 /* RESET */
-*{
-  box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
 /* BODY */
 body{
@@ -34,25 +32,30 @@ body{
   background:linear-gradient(180deg,var(--pink1),#fff);
   color:var(--text);
   overflow-x:hidden;
+  position:relative;
 }
 
-/* BAŞLIKLAR – ROMANTİK */
-h1, h2{
+/* 💗 HAREKETLİ ARKA PLAN */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,182,193,.35), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,111,145,.35), transparent 40%);
+  animation:bgMove 18s linear infinite;
+  z-index:-1;
+}
+
+@keyframes bgMove{
+  0%{background-position:0 0,100% 100%}
+  100%{background-position:100% 100%,0 0}
+}
+
+/* BAŞLIKLAR */
+h1,h2{
   text-align:center;
   font-family:"Pacifico", cursive !important;
-  letter-spacing:0.5px;
-}
-
-/* PARAGRAF & METİNLER */
-p,
-div,
-span,
-button,
-.love-box,
-.floating-love,
-.photo-text,
-footer{
-  font-family:"Quicksand", system-ui, sans-serif !important;
 }
 
 /* SECTİON */
@@ -87,7 +90,7 @@ section{
   cursor:pointer;
   transition:.3s;
 }
-.photo-area:hover{transform:scale(1.05)}
+.photo-area:hover{ transform:scale(1.05); }
 
 .photo-text{
   margin-top:15px;
@@ -117,6 +120,21 @@ footer{
 .animate.show{
   opacity:1;
   transform:none;
+}
+
+/* 💗 UÇUŞAN KALPLER */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:floatUp 6s linear infinite;
+  opacity:.7;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(1);opacity:.7}
+  100%{transform:translateY(-110vh) scale(1.6);opacity:0}
 }
 
 /* MODAL */
@@ -211,7 +229,9 @@ footer{
   </p>
 
   <button class="secret-btn" onclick="reveal()">🎁 Küçük Bir Sürpriz</button>
-  <div class="secret" id="secret">💗 Defne… seni bu hayatta her şeyden daha çok seviyorum senin ve bizim için bu hayatta en güzeli neyse o olması için sonuna kadar deneyeceğim bebeğim burası artık senin siten bu sürprizden sonra bu siteye eklemek istediklerini bana hep söyle ben güncellerimmm dudum seni çok seviyorumm 💗</div>
+  <div class="secret" id="secret">
+    💗 Defne… seni bu hayatta her şeyden daha çok seviyorum senin ve bizim için bu hayatta en güzeli neyse o olması için sonuna kadar deneyeceğim bebeğim burası artık senin siten bu sürprizden sonra bu siteye eklemek istediklerini bana hep söyle ben güncellerimmm dudum seni çok seviyorumm 💗
+  </div>
 </section>
 
 <footer class="animate">
@@ -230,8 +250,19 @@ const obs=new IntersectionObserver(e=>{
 document.querySelectorAll(".animate").forEach(i=>obs.observe(i));
 
 /* foto */
-function openPhoto(){document.getElementById("photoModal").style.display="flex"}
-function closePhoto(){document.getElementById("photoModal").style.display="none"}
+function openPhoto(){ document.getElementById("photoModal").style.display="flex"; }
+function closePhoto(){ document.getElementById("photoModal").style.display="none"; }
+
+/* 💗 KALP ANİMASYONU */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💗";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(14+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},500);
 
 /* gizli mesaj */
 function reveal(){
