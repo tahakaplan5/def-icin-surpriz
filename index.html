@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>💗 Sana Küçük Bir Sürpriz 💗</title>
 
-<!-- FONTLAR -->
+<!-- 💗 ROMANTİK FONTLAR -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,61 +18,66 @@
   --text:#5a1a2c;
 }
 
-html,body{
-  font-family:"Quicksand",sans-serif;
-  margin:0;
-  overflow-x:hidden;
+
+
+/* GENEL FONT */
+html, body{
+  font-family:"Quicksand", system-ui, sans-serif !important;
 }
 
+/* RESET */
+*{ box-sizing:border-box; }
+
+/* BODY */
 body{
+  margin:0;
   background:linear-gradient(180deg,var(--pink1),#fff);
   color:var(--text);
+  overflow-x:hidden;
+  position:relative;
 }
 
-/* 🌙 GECE MODU */
-body.night{
-  background:linear-gradient(180deg,#1a0b12,#000);
-  color:#ffd6e5;
-}
-body.night .love-box{background:#2a0f1c;color:#ffd6e5}
-body.night .photo-area{background:#ff6f91}
-
-/* 🌙 BUTON */
-.night-btn{
+/* 💗 HAREKETLİ ARKA PLAN */
+body::before{
+  content:"";
   position:fixed;
-  top:20px;
-  right:20px;
-  width:50px;
-  height:50px;
-  border:none;
-  border-radius:50%;
-  font-size:22px;
-  background:#ff6f91;
-  cursor:pointer;
-  z-index:999;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,182,193,.35), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,111,145,.35), transparent 40%);
+  animation:bgMove 18s linear infinite;
+  z-index:-1;
+}
+
+@keyframes bgMove{
+  0%{background-position:0 0,100% 100%}
+  100%{background-position:100% 100%,0 0}
 }
 
 /* BAŞLIKLAR */
 h1,h2{
-  font-family:"Pacifico",cursive;
   text-align:center;
+  font-family:"Pacifico", cursive !important;
 }
 
 /* SECTİON */
 section{
+  padding:70px 20px;
   max-width:900px;
   margin:auto;
-  padding:70px 20px;
 }
 
 /* HERO */
-.hero{text-align:center;padding:90px 20px}
+.hero{
+  text-align:center;
+  padding:90px 20px;
+}
 
-/* KART */
+/* KARTLAR */
 .love-box{
   background:#fff;
-  padding:28px;
   border-radius:22px;
+  padding:28px;
   margin:30px 0;
   box-shadow:0 12px 30px rgba(255,111,145,.25);
   text-align:center;
@@ -83,19 +88,57 @@ section{
   background:var(--pink2);
   padding:45px;
   border-radius:28px;
-  cursor:pointer;
   text-align:center;
+  cursor:pointer;
   transition:.3s;
 }
-.photo-area:hover{transform:scale(1.05)}
+.photo-area:hover{ transform:scale(1.05); }
 
-.photo-text{margin-top:15px;font-size:1.2rem}
+.photo-text{
+  margin-top:15px;
+  font-size:1.2rem;
+}
 
-.floating-love{text-align:center;font-size:1.25rem;margin:55px 0}
+/* YAZILAR */
+.floating-love{
+  margin:55px 0;
+  text-align:center;
+  font-size:1.25rem;
+}
 
-/* SCROLL */
-.animate{opacity:0;transform:translateY(40px);transition:.9s}
-.animate.show{opacity:1;transform:none}
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:45px;
+  opacity:.85;
+}
+
+/* SCROLL ANİMASYON */
+.animate{
+  opacity:0;
+  transform:translateY(40px);
+  transition:.9s ease;
+}
+.animate.show{
+  opacity:1;
+  transform:none;
+}
+
+/* 💗 UÇUŞAN KALPLER */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:floatUp 6s linear infinite;
+  opacity:.7;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(1);opacity:.7}
+  100%{transform:translateY(-110vh) scale(1.6);opacity:0}
+}
+
 
 /* MODAL */
 .modal{
@@ -105,11 +148,15 @@ section{
   background:rgba(0,0,0,.7);
   justify-content:center;
   align-items:center;
-  z-index:1000;
+  z-index:999;
 }
-.modal img{max-width:90%;max-height:90%;border-radius:20px}
+.modal img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:20px;
+}
 
-/* 🎁 BUTON */
+/* GİZLİ BUTON */
 .secret-btn{
   display:block;
   margin:60px auto 0;
@@ -121,7 +168,12 @@ section{
   font-size:1.1rem;
   cursor:pointer;
 }
-.secret{display:none;text-align:center;margin-top:30px;font-size:1.4rem}
+.secret{
+  display:none;
+  text-align:center;
+  margin-top:30px;
+  font-size:1.4rem;
+}
 
 /* 💗 KALPLER */
 .heart{
@@ -146,12 +198,82 @@ section{
 }
 
 footer{text-align:center;padding:45px;opacity:.85}
+
+/* 🌙 GECE MODU */
+body.night{
+  background:linear-gradient(180deg,#1a0b12,#000);
+  color:#ffd6e5;
+}
+
+body.night .love-box{
+  background:#2a0f1c;
+  color:#ffd6e5;
+}
+
+body.night .photo-area{
+  background:#ff6f91;
+}
+
+body.night footer{
+  opacity:1;
+}
+
+/* GECE MODU BUTONU */
+.night-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:1000;
+  background:#ff6f91;
+  border:none;
+  border-radius:50%;
+  width:50px;
+  height:50px;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+/* 🌙 GECE MODU */
+body.night{
+  background:linear-gradient(180deg,#1a0b12,#000);
+  color:#ffd6e5;
+}
+
+body.night .love-box{
+  background:#2a0f1c;
+  color:#ffd6e5;
+}
+
+body.night .photo-area{
+  background:#ff6f91;
+}
+
+body.night footer{
+  opacity:1;
+}
+
+/* GECE MODU BUTONU */
+.night-btn{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:1000;
+  background:#ff6f91;
+  border:none;
+  border-radius:50%;
+  width:50px;
+  height:50px;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
 </style>
 </head>
 
 <body>
-
-<button class="night-btn" onclick="toggleNight()">🌙</button>
+  <button class="night-btn" onclick="toggleNight()">🌙</button>
 
 <div class="hero animate">
   <h1>💗 <span>Sana</span> Küçük Bir Sürpriz Sevdiğim 💗</h1>
@@ -159,9 +281,17 @@ footer{text-align:center;padding:45px;opacity:.85}
 </div>
 
 <section>
-  <div class="love-box animate">🌸 Senin koynuna yatıp kalp atışını dinlediğimde çok heyecanlanıyorum.</div>
-  <div class="floating-love animate">💕 Seni çok seviyorum, bunu bilmeni istiyorum.</div>
-  <div class="love-box animate">Her günümü seninle geçirmek istiyorum, her şeyi yaparım senin için 💗</div>
+  <div class="love-box animate">
+    🌸 Senin koynuna yatıp kalp atışını dinlediğimde çok heyecanlanıyorum.
+  </div>
+
+  <div class="floating-love animate">
+    💕 Seni çok seviyorum, bunu bilmeni istiyorum.
+  </div>
+
+  <div class="love-box animate">
+    Her günümü seninle geçirmek istiyorum, her şeyi yaparım senin için 💗
+  </div>
 </section>
 
 <section>
@@ -169,6 +299,24 @@ footer{text-align:center;padding:45px;opacity:.85}
     <h2>📸 Buraya Dokun 💕</h2>
     <p>Bize ait dudi bir anı saklı</p>
     <div class="photo-text">💖 seni çok seviyorum Defne 💖</div>
+  </div>
+</section>
+
+<section>
+  <div class="floating-love animate">
+    💖 Seni çok seviyorum, her şey için çok özür dilerim Defişçimm.
+  </div>
+
+  <div class="love-box animate">
+    Her zaman seni çok seveceğim Defnecim 🥹
+  </div>
+
+  <div class="floating-love animate">
+    💖 Dudusuyum… her şeyi düzene sokucam, lütfen bana inan.
+  </div>
+
+  <div class="love-box animate">
+    İyi ki varsın Defne'm… iyi ki <b>biz</b> varız 💞
   </div>
 </section>
 
@@ -181,14 +329,16 @@ footer{text-align:center;padding:45px;opacity:.85}
 
   <button class="secret-btn" onclick="reveal()">🎁 Küçük Bir Sürpriz</button>
   <div class="secret" id="secret">
-    💗 Defne… seni bu hayatta her şeyden daha çok seviyorum 💗
+    💗 Defne… seni bu hayatta her şeyden daha çok seviyorum senin ve bizim için bu hayatta en güzeli neyse o olması için sonuna kadar deneyeceğim bebeğim burası artık senin siten bu sürprizden sonra bu siteye eklemek istediklerini bana hep söyle ben güncellerimmm dudum seni çok seviyorumm 💗
   </div>
 </section>
 
-<footer class="animate">💕 Sadece senin için hazırlandı</footer>
+<footer class="animate">
+  💕 Sadece senin için hazırlandı
+</footer>
 
 <div class="modal" id="photoModal" onclick="closePhoto()">
-  <img src="defta.jpg">
+  <img src="defta.jpg" alt="Biz">
 </div>
 
 <script>
@@ -198,32 +348,52 @@ const obs=new IntersectionObserver(e=>{
 },{threshold:.2});
 document.querySelectorAll(".animate").forEach(i=>obs.observe(i));
 
-function openPhoto(){photoModal.style.display="flex"}
-function closePhoto(){photoModal.style.display="none"}
-function reveal(){secret.style.display="block"}
+/* foto */
+function openPhoto(){ document.getElementById("photoModal").style.display="flex"; }
+function closePhoto(){ document.getElementById("photoModal").style.display="none"; }
 
-function toggleNight(){
-  document.body.classList.toggle("night");
-  document.querySelector(".night-btn").textContent=
-    document.body.classList.contains("night")?"☀️":"🌙";
-}
-
-/* 💗 kalpler */
+/* 💗 KALP ANİMASYONU */
 setInterval(()=>{
   const h=document.createElement("div");
   h.className="heart";
   h.innerHTML="💗";
   h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(14+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},500);
+
+/* gizli mesaj */
+function reveal(){
+  document.getElementById("secret").style.display="block";
+}
+
+/* 🌙 gece modu */
+function toggleNight(){
+  document.body.classList.toggle("night");
+  document.querySelector(".night-btn").textContent =
+    document.body.classList.contains("night") ? "☀️" : "🌙";
+}
+
+/* 💗 patlayan kalpler */
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💗";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(14+Math.random()*22)+"px";
 
   h.onclick=()=>{
     for(let i=0;i<6;i++){
-      const p=document.createElement("div");
-      p.className="pop";
+      const p=document.createElement("span");
       p.innerHTML="💖";
+      p.style.position="fixed";
       p.style.left=h.style.left;
-      p.style.bottom="30px";
+      p.style.bottom="20px";
+      p.style.fontSize="14px";
+      p.style.animation=`pop ${0.6+Math.random()}s ease-out forwards`;
       document.body.appendChild(p);
-      setTimeout(()=>p.remove(),800);
+      setTimeout(()=>p.remove(),1000);
     }
     h.remove();
   };
@@ -231,6 +401,11 @@ setInterval(()=>{
   document.body.appendChild(h);
   setTimeout(()=>h.remove(),6000);
 },500);
+
+
+
+</script>
+
 </script>
 
 </body>
