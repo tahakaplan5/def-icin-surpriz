@@ -345,11 +345,15 @@ body.night footer{
 
 /* SARILMA ANI */
 .pixel-scene.hug #pixel-erkek{
-  transform:translateX(-60%) scale(1.08);
+  left:50%;
+  transform:translateX(-60%) scale(1.15);
+  z-index:2;
 }
 
 .pixel-scene.hug #pixel-kiz{
-  transform:translateX(60%) scale(1.08);
+  right:50%;
+  transform:translateX(60%) scale(1.15);
+  z-index:1;
 }
 
 .pixel-scene.hug .pixel-character{
@@ -510,13 +514,14 @@ setInterval(()=>{
 function pixelSaril(){
   const scene = document.getElementById("pixelScene");
 
+  scene.classList.remove("hug"); // garanti olsun
   scene.classList.add("active");
 
-  // 1.5 sn sonra sarılma
   setTimeout(()=>{
     scene.classList.add("hug");
-  },1500);
+  },1200);
 }
+
 
 
 
