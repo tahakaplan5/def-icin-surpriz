@@ -269,6 +269,69 @@ body.night footer{
   box-shadow:0 8px 20px rgba(0,0,0,.3);
 }
 
+/* 🧡 PIXEL KARAKTER SAHNESİ */
+.pixel-scene{
+  position:relative;
+  width:100%;
+  max-width:700px;
+  height:260px;
+  margin:60px auto;
+}
+
+.pixel-character{
+  position:absolute;
+  bottom:40px;
+  width:80px;
+  image-rendering:pixelated;
+  transition:all 1.6s ease;
+}
+
+#pixel-erkek{ left:0; }
+#pixel-kiz{ right:0; }
+
+.pixel-scene.active #pixel-erkek{
+  left:45%;
+  transform:translateX(-100%);
+}
+
+.pixel-scene.active #pixel-kiz{
+  right:45%;
+  transform:translateX(100%);
+}
+
+.pixel-btn{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:var(--pink3);
+  color:#fff;
+  font-size:1.1rem;
+  cursor:pointer;
+}
+
+.pixel-heart{
+  position:absolute;
+  left:50%;
+  top:120px;
+  transform:translateX(-50%);
+  font-size:32px;
+  opacity:0;
+}
+
+.pixel-scene.active .pixel-heart{
+  animation:pixelHeart 2s ease forwards;
+}
+
+@keyframes pixelHeart{
+  0%{transform:translate(-50%,0) scale(.4);opacity:0}
+  40%{opacity:1}
+  100%{transform:translate(-50%,-40px) scale(1.2);opacity:0}
+}
+
 </style>
 </head>
 
@@ -318,7 +381,20 @@ body.night footer{
   <div class="love-box animate">
     İyi ki varsın Defne'm… iyi ki <b>biz</b> varız 💞
   </div>
+  
 </section>
+
+<section class="animate">
+  <h2>💞 Biz</h2>
+
+  <div class="pixel-scene" id="pixelScene">
+    <img src="erkek.png" id="pixel-erkek" class="pixel-character">
+    <img src="kiz.png" id="pixel-kiz" class="pixel-character">
+    <div class="pixel-heart">💖</div>
+    <button class="pixel-btn" onclick="pixelSaril()">Bize Dokun 💕</button>
+  </div>
+</section>
+
 
 <section class="animate">
   <h2>💌 Küçük ama Gerçek</h2>
@@ -402,6 +478,10 @@ setInterval(()=>{
   setTimeout(()=>h.remove(),6000);
 },500);
 
+/* 💕 pixel sarılma */
+function pixelSaril(){
+  document.getElementById("pixelScene").classList.add("active");
+}
 
 
 </script>
