@@ -281,68 +281,46 @@ body.night footer{
 .pixel-character{
   position:absolute;
   bottom:40px;
-  width:128px;
+  width:160px;
   image-rendering:pixelated;
-  transition:all 1.6s ease;
+  transition:left 1.4s ease, right 1.4s ease, scale .6s ease;
 }
 
 #pixel-erkek{ left:0; }
 #pixel-kiz{ right:0; }
 
-.pixel-btn{
-  position:absolute;
-  left:50%;
-  bottom:0;
-  transform:translateX(-50%);
-  padding:12px 30px;
-  border:none;
-  border-radius:30px;
-  background:var(--pink3);
-  color:#fff;
-  font-size:1.1rem;
-  cursor:pointer;
+/* YAKLAŞMA */
+.pixel-scene.active #pixel-erkek{
+  left:42%;
 }
 
-.pixel-heart{
-  position:absolute;
-  left:50%;
-  top:120px;
-  transform:translateX(-50%);
-  font-size:32px;
-  opacity:0;
+.pixel-scene.active #pixel-kiz{
+  right:42%;
 }
 
-.pixel-scene.active .pixel-heart{
-  animation:pixelHeart 2s ease forwards;
-}
-
-@keyframes pixelHeart{
-  0%{transform:translate(-50%,0) scale(.4);opacity:0}
-  40%{opacity:1}
-  100%{transform:translate(-50%,-40px) scale(1.2);opacity:0}
-}
-
-/* SARILMA ANI */
+/* 💞 SARILMA */
 .pixel-scene.hug #pixel-erkek{
-  left:50%;
-  transform:translateX(-60%) scale(1.15);
+  left:46%;
+  scale:1.15;
   z-index:2;
 }
 
 .pixel-scene.hug #pixel-kiz{
-  right:50%;
-  transform:translateX(60%) scale(1.15);
+  right:46%;
+  scale:1.15;
   z-index:1;
 }
 
+/* SARILMA HAREKETİ */
 .pixel-scene.hug .pixel-character{
-  animation:hugBounce .6s ease-in-out infinite alternate;
+  animation:hugBounce .5s ease-in-out infinite alternate;
 }
 
 @keyframes hugBounce{
-  from{ transform:translateY(0) scale(1.08); }
-  to{ transform:translateY(-6px) scale(1.1); }
+  from{ scale:1.12; }
+  to{ scale:1.18; }
 }
+
 
 </style>
 </head>
