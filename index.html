@@ -328,8 +328,23 @@ body.night footer{
   bottom:0;
   transform:translateX(-50%);
   z-index:5;
-  pointer-events:auto;
+
+  background:var(--pink3);
+  color:#fff;
+  border:none;
+  padding:14px 34px;
+  border-radius:30px;
+  font-size:1.1rem;
+  font-family:"Quicksand", system-ui, sans-serif;
+  cursor:pointer;
+  box-shadow:0 8px 20px rgba(255,111,145,.45);
+  transition:.3s ease;
 }
+
+.pixel-btn:hover{
+  transform:translateX(-50%) scale(1.06);
+}
+
 
 
 </style>
