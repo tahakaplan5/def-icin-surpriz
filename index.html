@@ -312,13 +312,23 @@ body.night footer{
 }
 
 /* SARILMA HAREKETİ */
-.pixel-scene.hug .pixel-character{
+.pixel-scene.hug img.pixel-character{
   animation:hugBounce .5s ease-in-out infinite alternate;
 }
+
 
 @keyframes hugBounce{
   from{ scale:1.12; }
   to{ scale:1.18; }
+}
+
+.pixel-btn{
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  z-index:5;
+  pointer-events:auto;
 }
 
 
