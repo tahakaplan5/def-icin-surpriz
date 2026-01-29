@@ -281,7 +281,7 @@ body.night footer{
 .pixel-character{
   position:absolute;
   bottom:40px;
-  width:80px;
+  width:128px;
   image-rendering:pixelated;
   transition:all 1.6s ease;
 }
@@ -330,6 +330,35 @@ body.night footer{
   0%{transform:translate(-50%,0) scale(.4);opacity:0}
   40%{opacity:1}
   100%{transform:translate(-50%,-40px) scale(1.2);opacity:0}
+}
+
+/* yaklaşma */
+.pixel-scene.active #pixel-erkek{
+  left:50%;
+  transform:translateX(-110%) scale(1.05);
+}
+
+.pixel-scene.active #pixel-kiz{
+  right:50%;
+  transform:translateX(110%) scale(1.05);
+}
+
+/* SARILMA ANI */
+.pixel-scene.hug #pixel-erkek{
+  transform:translateX(-60%) scale(1.08);
+}
+
+.pixel-scene.hug #pixel-kiz{
+  transform:translateX(60%) scale(1.08);
+}
+
+.pixel-scene.hug .pixel-character{
+  animation:hugBounce .6s ease-in-out infinite alternate;
+}
+
+@keyframes hugBounce{
+  from{ transform:translateY(0) scale(1.08); }
+  to{ transform:translateY(-6px) scale(1.1); }
 }
 
 </style>
@@ -478,10 +507,17 @@ setInterval(()=>{
   setTimeout(()=>h.remove(),6000);
 },500);
 
-/* 💕 pixel sarılma */
 function pixelSaril(){
-  document.getElementById("pixelScene").classList.add("active");
+  const scene = document.getElementById("pixelScene");
+
+  scene.classList.add("active");
+
+  // 1.5 sn sonra sarılma
+  setTimeout(()=>{
+    scene.classList.add("hug");
+  },1500);
 }
+
 
 
 </script>
