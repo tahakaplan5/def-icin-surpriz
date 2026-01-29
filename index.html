@@ -345,7 +345,25 @@ body.night footer{
   transform:translateX(-50%) scale(1.06);
 }
 
+.pixel-heart{
+  position:absolute;
+  left:50%;
+  top:90px;
+  transform:translateX(-50%);
+  font-size:34px;
+  opacity:0;
+  pointer-events:none;
+}
 
+.pixel-scene.hug .pixel-heart{
+  animation:pixelHeart 1.6s ease forwards;
+}
+
+@keyframes pixelHeart{
+  0%{ transform:translate(-50%,0) scale(.4); opacity:0 }
+  40%{ opacity:1 }
+  100%{ transform:translate(-50%,-40px) scale(1.2); opacity:0 }
+}
 
 </style>
 </head>
